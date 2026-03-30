@@ -25,8 +25,14 @@ body {
 
 html {
   scroll-behavior: smooth;
-  /* TopBar (30px) + Navbar (79px) = 109px fixed header height */
-  scroll-padding-top: 109px;
+  /* Mobile: Navbar only (~80px), Desktop: TopBar (30px) + Navbar (79px) = 109px */
+  scroll-padding-top: 80px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 109px;
+  }
 }
 
 .gradient-text {

@@ -70,9 +70,12 @@ export default function Navbar() {
         if (target === "home") {
           window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-          document
-            .getElementById(target)
-            ?.scrollIntoView({ behavior: "smooth" });
+          const el = document.getElementById(target);
+          if (el) {
+            const headerH = window.innerWidth >= 1024 ? 109 : 80;
+            const top = el.getBoundingClientRect().top + window.scrollY - headerH;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
         }
       });
     }
@@ -87,9 +90,12 @@ export default function Navbar() {
         if (anchor === "home") {
           window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-          document
-            .getElementById(anchor)
-            ?.scrollIntoView({ behavior: "smooth" });
+          const el = document.getElementById(anchor);
+          if (el) {
+            const headerH = window.innerWidth >= 1024 ? 109 : 80;
+            const top = el.getBoundingClientRect().top + window.scrollY - headerH;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
         }
       } else {
         sessionStorage.setItem("scrollTarget", anchor);
