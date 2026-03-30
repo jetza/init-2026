@@ -67,7 +67,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="bs">
+    <html lang="bs" translate="no">
+      <head>
+        <meta name="google" content="notranslate" />
+      </head>
       <body className="antialiased">
         <LanguageProvider>
           {children}

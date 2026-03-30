@@ -9,8 +9,10 @@ export default function ContactForm() {
   const { t } = useLanguage();
   const c = t.contact;
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -18,9 +20,25 @@ export default function ContactForm() {
     const email = data.get("email") as string;
     const message = data.get("message") as string;
 
-    window.location.href = `mailto:info@initconf.org?subject=INIT 2026 - ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
-    setSubmitted(true);
-    form.reset();
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || "Failed to send message.");
+      }
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -101,10 +119,16 @@ export default function ContactForm() {
               </div>
               <button
                 type="submit"
-                className="btn-shimmer w-full h-14 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors"
+                disabled={sending}
+                className="btn-shimmer w-full h-14 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {c.send}
+                {sending ? "..." : c.send}
               </button>
+              {error && (
+                <p className="text-center text-red-400 font-medium pt-2">
+                  {error}
+                </p>
+              )}
               {submitted && (
                 <p className="text-center text-[#1FC7D8] font-medium pt-2">
                   {c.success}
