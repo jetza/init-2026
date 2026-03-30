@@ -15,7 +15,7 @@ export default function TopBar() {
   const { lang, setLang, t } = useLanguage();
 
   return (
-    <div className="gradient-bg text-white h-7.5 flex items-center">
+    <div className="gradient-bg text-white h-7.5 hidden lg:flex items-center">
       <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
         {/* Social icons */}
         <div className="flex items-center gap-4">

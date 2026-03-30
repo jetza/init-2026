@@ -4,16 +4,24 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { usePathname, useRouter } from "next/navigation";
-import { HamburgerIcon, CloseIcon } from "@/components/icons";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const { t } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
 
   const isHome = pathname === "/";
+
+  // Track scroll for transparent → solid transition
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // On the home page, track which section is in view
   useEffect(() => {
@@ -111,14 +119,24 @@ export default function Navbar() {
     borderBottom: "3px solid transparent",
   };
 
+  const showSolid = scrolled || mobileOpen || !isHome;
+
   return (
     <nav
-      className="bg-white"
-      style={{
-        borderBottom: "1px solid transparent",
-        borderImage: "linear-gradient(90deg, #9333EA, #E32066) 1",
-        borderImageSlice: 1,
-      }}
+      className={`transition-all duration-300 ${
+        showSolid ? "bg-white shadow-sm" : "bg-transparent"
+      }`}
+      style={
+        showSolid
+          ? {
+              borderBottom: "1px solid transparent",
+              borderImageSource: "linear-gradient(90deg, #9333EA, #E32066)",
+              borderImageSlice: 1,
+            }
+          : {
+              borderBottom: "1px solid transparent",
+            }
+      }
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-19.75">
@@ -148,19 +166,37 @@ export default function Navbar() {
           {/* Spacer to balance logo width for centering */}
           <div className="hidden lg:block w-29.25 shrink-0" />
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — animated */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden relative w-8 h-8 flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <CloseIcon /> : <HamburgerIcon />}
+            <span
+              className={`absolute h-0.5 w-6 bg-current rounded transition-all duration-300 ${
+                mobileOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+              } ${!showSolid ? "text-white" : "text-gray-800"}`}
+            />
+            <span
+              className={`absolute h-0.5 w-6 bg-current rounded transition-all duration-300 ${
+                mobileOpen ? "opacity-0 scale-0" : "opacity-100"
+              } ${!showSolid ? "text-white" : "text-gray-800"}`}
+            />
+            <span
+              className={`absolute h-0.5 w-6 bg-current rounded transition-all duration-300 ${
+                mobileOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+              } ${!showSolid ? "text-white" : "text-gray-800"}`}
+            />
           </button>
         </div>
 
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100">
+        {/* Mobile menu — slide down */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="py-4 border-t border-gray-100">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => {
                 const active = isActive(link);
@@ -179,7 +215,7 @@ export default function Navbar() {
               })}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

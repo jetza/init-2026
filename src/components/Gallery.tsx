@@ -22,13 +22,7 @@ export default function Gallery() {
         </FadeUp>
 
         <FadeUp delay={0.15}>
-          <div
-            className="grid gap-4"
-            style={{
-              gridTemplateColumns: "1fr 411px",
-              gridTemplateRows: "308px 308px",
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[250px] md:auto-rows-[308px]">
             {/* Top-left (INIT 2019) */}
             <div className="group">
               {galleryYears[0].link ? (
@@ -76,8 +70,8 @@ export default function Gallery() {
               )}
             </div>
 
-            {/* Right — spans 2 rows (INIT 2025) */}
-            <div className="row-span-2 group">
+            {/* Right — spans 2 rows on md+ (INIT 2025) */}
+            <div className="md:row-span-2 group">
               {galleryYears[2].link ? (
                 <a
                   href={galleryYears[2].link}
