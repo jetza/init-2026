@@ -148,7 +148,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-19.75">
           {/* Logo */}
           <div className="flex items-center gap-2 shrink-0">
-            <Image src="/images/logo.svg" alt="INIT" width={117} height={43} />
+            <a
+              href="/"
+              onClick={(e) => handleNavClick(e, "home")}
+              aria-label="INIT 2026 — Home"
+            >
+              <Image src="/images/logo.svg" alt="INIT" width={117} height={43} />
+            </a>
           </div>
 
           {/* Desktop nav — centered */}

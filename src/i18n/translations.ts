@@ -61,6 +61,7 @@ export const translations = {
         "Prijavi svoje predavanje i podijeli znanje sa zajednicom. Prijavnice su otvorene — iskoristi svoju šansu.",
       submitTalk: "Prijavi predavanje",
       poweredBy: "Powered by Sessionize",
+      comingSoon: "Poziv za prijavu predavanja će biti objavljen uskoro.",
       topicsTitle: "Prijedlozi tema uključuju:",
       topics: [
         "AI i agenti za kodiranje",
@@ -173,6 +174,7 @@ export const translations = {
         "Submit your talk and share your knowledge with the community. Applications are open — seize your chance.",
       submitTalk: "Submit a talk",
       poweredBy: "Powered by Sessionize",
+      comingSoon: "Call for speakers will be announced soon.",
       topicsTitle: "Topic suggestions include:",
       topics: [
         "AI and Coding Agents",

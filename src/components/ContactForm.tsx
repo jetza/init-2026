@@ -23,14 +23,14 @@ export default function ContactForm() {
     setSending(true);
     setError("");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://formsubmit.co/ajax/info@initconf.org", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ name, email, message }),
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => null);
-        throw new Error(body?.error || "Failed to send message.");
+      const body = await res.json().catch(() => null);
+      if (!res.ok || body?.success !== "true") {
+        throw new Error(body?.message || "Failed to send message.");
       }
       setSubmitted(true);
       form.reset();
@@ -44,13 +44,13 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="bg-[#010254] py-20 relative overflow-hidden"
+      className="bg-[#010254] min-h-screen flex flex-col justify-center py-20 relative overflow-hidden"
     >
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#9333EA] rounded-full opacity-5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#E32066] rounded-full opacity-5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-300 mx-auto px-6 relative z-10">
+      <div className="max-w-300 mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           {/* Left: text content */}
           <FadeUp className="lg:w-96 shrink-0">

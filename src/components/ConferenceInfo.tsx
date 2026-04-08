@@ -183,7 +183,7 @@ export default function ConferenceInfo() {
       </section>
 
       {/* Konferencija card */}
-      <section className="bg-white py-16">
+      <section className="bg-white min-h-screen flex flex-col justify-center py-16">
         <div className="max-w-300 mx-auto px-6">
           <FadeUp>
             <div
