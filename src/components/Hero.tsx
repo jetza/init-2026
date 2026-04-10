@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center pt-27.25 pb-16"
+      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center pt-27.25"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#06021e]" />
@@ -83,21 +83,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* White arc over the bottom of the video */}
-      <div className="absolute bottom-0 left-0 right-0 z-20">
-        <svg
-          viewBox="0 0 1765 185"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full block"
-          style={{ display: "block" }}
-        >
-          <path
-            d="M0.766,80.849C608.385,212.963 1196.47,211.428 1765.56,79.913L1764.93,184.261L0.247,184.26L0.766,80.849Z"
-            fill="white"
-          />
-        </svg>
-      </div>
     </section>
   );
 }
