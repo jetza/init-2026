@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="sr-Cyrl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INIT 2026 — Понуда за спонзорство</title>
+  <style>
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #090b6c;
+      --pink:   #e83171;
+      --ink:    #1a1a2e;
+      --muted:  #5a5a7a;
+      --border: #d0d4e8;
+      --bg:     #f5f6fb;
+      --white:  #ffffff;
+      --gold:   #c8a84b;
+    }
+
+    html { font-size: 10pt; }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      color: var(--ink);
+      background: #e0e3ee;
+      line-height: 1.6;
+      padding: 12mm 0;
+    }
+
+    /* ─── A4 Page Shell ─────────────────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--white);
+      margin: 0 auto 32mm;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 32px rgba(9,11,108,.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── Header (repeated on each page) ───────────────────────── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      padding: 4mm 12mm;
+      border-bottom: 2px solid var(--navy);
+      background: var(--white);
+    }
+
+    .logo-svg {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    /* ─── Accent strip below header ────────────────────────────── */
+    .accent-strip {
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink) 0%, var(--navy) 100%);
+    }
+
+    /* ─── Page Content Area ─────────────────────────────────────── */
+    .page-content {
+      flex: 1;
+      padding: 10mm 12mm;
+    }
+
+    /* ─── Page Footer ───────────────────────────────────────────── */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      font-size: 6.5pt;
+      color: var(--muted);
+    }
+
+    .footer-company {
+      padding: 2.5mm 12mm;
+      color: var(--ink);
+      font-size: 6.5pt;
+      letter-spacing: .01em;
+      text-align: center;
+    }
+
+
+    /* ─── Cover Page ────────────────────────────────────────────── */
+    .cover-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a1d8c 60%, #0d0f5e 100%);
+      color: var(--white);
+      padding: 18mm 14mm 14mm;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-hero::before {
+      content: '';
+      position: absolute;
+      top: -30mm;
+      right: -20mm;
+      width: 90mm;
+      height: 90mm;
+      border-radius: 50%;
+      background: rgba(232, 49, 113, .12);
+    }
+
+    .cover-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20mm;
+      left: -15mm;
+      width: 70mm;
+      height: 70mm;
+      border-radius: 50%;
+      background: rgba(232, 49, 113, .08);
+    }
+
+    .cover-label {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 4mm;
+    }
+
+    .cover-title {
+      font-size: 34pt;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -.02em;
+      margin-bottom: 2mm;
+    }
+
+    .cover-title span { color: var(--pink); }
+
+    .cover-subtitle {
+      font-size: 12pt;
+      font-weight: 300;
+      opacity: .85;
+      margin-bottom: 8mm;
+      letter-spacing: .04em;
+    }
+
+    .cover-divider {
+      width: 18mm;
+      height: 3px;
+      background: var(--pink);
+      margin-bottom: 6mm;
+    }
+
+    .cover-meta {
+      font-size: 8.5pt;
+      opacity: .75;
+      line-height: 2;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 1.5mm 4mm;
+      border-radius: 1px;
+      margin-top: 4mm;
+    }
+
+    /* ─── Stats row on cover ────────────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4mm;
+      margin-top: 10mm;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-top: 3px solid var(--pink);
+      padding: 5mm 5mm 4mm;
+    }
+
+    .stat-number {
+      font-size: 22pt;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 7.5pt;
+      color: rgba(255,255,255,.65);
+      margin-top: 1mm;
+      letter-spacing: .06em;
+    }
+
+    /* ─── Section Headings ──────────────────────────────────────── */
+    .section-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 2mm;
+    }
+
+    h2 {
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 4mm;
+    }
+
+    h3 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2mm;
+    }
+
+    p {
+      font-size: 9pt;
+      color: #3a3a5c;
+      margin-bottom: 3mm;
+      line-height: 1.7;
+    }
+
+    /* ─── Info Cards ────────────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4mm;
+      margin: 5mm 0;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      padding: 5mm;
+      background: var(--white);
+    }
+
+    .card-icon {
+      margin-bottom: 2mm;
+      color: var(--navy);
+      line-height: 0;
+    }
+
+    .card h3 { font-size: 9.5pt; }
+    .card p  { font-size: 8.5pt; margin: 0; }
+
+    /* ─── Benefit Pillars ───────────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+      margin: 5mm 0;
+    }
+
+    .pillar {
+      background: var(--bg);
+      border-bottom: 3px solid var(--pink);
+      padding: 4mm 3mm;
+      text-align: center;
+    }
+
+    .pillar-icon {
+      margin-bottom: 2mm;
+      display: flex;
+      justify-content: center;
+      color: var(--pink);
+      line-height: 0;
+    }
+
+    .pkg-title svg { vertical-align: middle; margin-right: 4px; }
+
+    .pillar h3 {
+      font-size: 8.5pt;
+      color: var(--navy);
+      margin-bottom: 1.5mm;
+    }
+
+    .pillar p { font-size: 7.5pt; color: var(--muted); margin: 0; }
+
+    /* ─── Comparison Table ──────────────────────────────────────── */
+    .packages-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.8pt;
+      margin: 4mm 0;
+    }
+
+    .packages-table th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 3mm 2.5mm;
+      font-weight: 700;
+      text-align: center;
+      font-size: 8pt;
+      letter-spacing: .04em;
+    }
+
+    .packages-table th:first-child { text-align: left; }
+
+    .packages-table th.col-zp   { background: #7b0032; }
+    .packages-table th.col-gold { background: #b8862a; }
+    .packages-table th.col-act  { background: #1a4d8c; }
+    .packages-table th.col-sup  { background: #2a6e4d; }
+    .packages-table th.col-fri  { background: #4a4a7a; }
+
+    .packages-table td {
+      padding: 2.5mm 2.5mm;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      color: var(--ink);
+    }
+
+    .packages-table td:first-child { text-align: left; font-weight: 500; }
+
+    .packages-table tr:nth-child(even) td { background: var(--bg); }
+
+    .packages-table .price-row td {
+      background: var(--navy) !important;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 9pt;
+      padding: 3.5mm 2.5mm;
+    }
+
+    .packages-table .price-row td:first-child {
+      font-size: 8pt;
+      letter-spacing: .08em;
+    }
+
+    .check { color: #1a8c4e; font-size: 10pt; font-weight: 700; }
+    .dash  { color: var(--border); }
+
+    .size-l { font-weight: 700; color: var(--navy); }
+    .size-s { color: var(--muted); }
+
+    /* ─── Package Detail Cards ──────────────────────────────────── */
+    .pkg-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4mm 5mm;
+      margin-bottom: 4mm;
+    }
+
+    .pkg-header.zp   { background: linear-gradient(90deg, #7b0032, #b5004a); color: #fff; }
+    .pkg-header.gold { background: linear-gradient(90deg, #8a5e1a, #c8a84b); color: #fff; }
+    .pkg-header.act  { background: linear-gradient(90deg, var(--navy), #1a4d8c); color: #fff; }
+    .pkg-header.sup  { background: linear-gradient(90deg, #1a5c38, #2a8c5a); color: #fff; }
+    .pkg-header.fri  { background: linear-gradient(90deg, #3a3a5c, #5a5a8c); color: #fff; }
+
+    .pkg-title { font-size: 13pt; font-weight: 800; letter-spacing: .04em; }
+    .pkg-price { font-size: 11pt; font-weight: 700; text-align: right; }
+    .pkg-price-eur { font-size: 8pt; opacity: .8; }
+
+    .benefit-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 3mm;
+      columns: 2;
+      column-gap: 6mm;
+    }
+
+    .benefit-list li {
+      font-size: 8.5pt;
+      color: #2a2a4a;
+      padding: 1.5mm 0 1.5mm 5mm;
+      border-bottom: 1px solid #eef0f8;
+      position: relative;
+      break-inside: avoid;
+    }
+
+    .benefit-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--pink);
+      font-size: 8pt;
+    }
+
+    /* ─── Location / Event block ────────────────────────────────── */
+    .event-info {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a1d8c 100%);
+      color: var(--white);
+      padding: 7mm 8mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin: 5mm 0;
+    }
+
+    .event-info h3 { color: var(--white); font-size: 11pt; margin-bottom: 2mm; }
+    .event-info p  { color: rgba(255,255,255,.75); font-size: 8.5pt; margin: 0; }
+
+    .event-info .event-label {
+      font-size: 7pt;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 1mm;
+    }
+
+    /* ─── Contact block ─────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      margin: 5mm 0;
+    }
+
+    .contact-card {
+      border: 1px solid var(--border);
+      padding: 5mm;
+      background: var(--bg);
+    }
+
+    .contact-card .name { font-size: 10pt; font-weight: 700; color: var(--navy); margin-bottom: 2mm; }
+    .contact-card .line { font-size: 8.5pt; color: var(--muted); margin-bottom: 1mm; }
+    .contact-card .line strong { color: var(--ink); }
+
+    /* ─── Positions map placeholder ─────────────────────────────── */
+    .positions-note {
+      background: var(--bg);
+      border-left: 3px solid var(--pink);
+      padding: 4mm 5mm;
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin: 4mm 0;
+    }
+
+    /* ─── Print optimisation ────────────────────────────────────── */
+    @media print {
+      body { background: none; padding: 0; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        break-after: page;
+        page-break-after: always;
+      }
+      .page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 1 — НАСЛОВНА
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <!-- Header -->
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <!-- Cover hero -->
+  <div class="cover-hero">
+    <div class="cover-label">Спонзорски проспект &nbsp;·&nbsp; 2026</div>
+    <div class="cover-title">INIT <span>2026</span></div>
+    <div class="cover-subtitle">Понуда за спонзорство</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      Септембар 2026 &nbsp;·&nbsp; Бања Лука<br>
+      Радионице: Септембар 2026
+    </div>
+    <div class="cover-badge">Повјерљиво — намијењено потенцијалним спонзорима</div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">500<span style="color:var(--pink)">+</span></div>
+        <div class="stat-label">Очекиваних посјетилаца</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">30<span style="color:var(--pink)">+</span></div>
+        <div class="stat-label">Предавача из региона и шире</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Предавачке сале</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <p style="font-size:8.5pt; color:var(--muted); line-height:1.8; margin-top:2mm;">
+      Овај документ садржи повјерљиве комерцијалне информације намијењене искључиво потенцијалним
+      спонзорима INIT конференције 2026. Молимо да не дистрибуишете овај материјал без претходне
+      писмене сагласности организатора.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 2 — О КОНФЕРЕНЦИЈИ
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <div class="page-content">
+    <div class="section-label">О конференцији</div>
+    <h2>Од програмера,<br>за програмере</h2>
+
+    <p>
+      INIT је започет 2019. године као непрофитна технолошка конференција фокусирана на развој
+      успјешне заједнице професионалаца у области развоја софтвера. Први INIT окупио је више од
+      500 учесника и 19 предавача, наишавши на фантастичан пријем у IT заједници.
+    </p>
+    <p>
+      Сада поносно настављамо са нашом мисијом: да креирамо окружење које подржава, инспирише
+      и шири знање међу IT професионалцима свих профила, помажући им да изграде вјештине
+      свјетског нивоа.
+    </p>
+    <p>
+      INIT је регионална технолошка конференција организована од Удружења за развој информационих
+      технологија „Developers" Бања Лука, која окупља лидере из области технологије, иновација
+      и предузетништва из цијелог региона.
+    </p>
+
+    <div class="event-info">
+      <div>
+        <div class="event-label">Локација и датум</div>
+        <h3>Бански двор, Бања Лука</h3>
+        <p>Једна од најљепших историјских грађевина у самом центру града, која је некада
+           служила као сједиште Врбаске Бановине.</p>
+      </div>
+      <div>
+        <div class="event-label">Термини</div>
+        <h3>Септембар 2026</h3>
+        <p>Конференција · Бања Лука</p>
+        <p style="margin-top:2mm;">Радионице: Септембар 2026 (4–8 сати по теми)</p>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:5mm;">Публика и формат</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M3 21v-1a6 6 0 0 1 6-6"/><circle cx="17" cy="9" r="3"/><path d="M21 21v-1a5 5 0 0 0-5-5h-2"/></svg></div>
+        <h3>500+ посјетилаца</h3>
+        <p>Програмери, предузетници и менаџери из софтверске индустрије — локални и регионални
+           професионалци.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></div>
+        <h3>30+ предавача</h3>
+        <p>Истакнути професионалци из региона и шире. Комбинација техничких, пословних и
+           инспиративних предавања.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 6 12 2 21 6"/><line x1="6" y1="10" x2="6" y2="22"/><line x1="10" y1="10" x2="10" y2="22"/><line x1="14" y1="10" x2="14" y2="22"/><line x1="18" y1="10" x2="18" y2="22"/></svg></div>
+        <h3>3 сале</h3>
+        <p>Главна сала за предавања широког спектра, мања сала за специјалистичка предавања
+           и сала за интерактивно предавање.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Регионални досег</h3>
+        <p>Учесници долазе из цијелог региона Западног Балкана, чинећи INIT платформом
+           са регионалним утицајем.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 3 — ЗАШТО БИТИ СПОНЗОР
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <div class="page-content">
+    <div class="section-label">Вриједност спонзорства</div>
+    <h2>4 разлога да будете спонзор INIT 2026</h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
+        <h3>Публицитет</h3>
+        <p>Истакните свој бренд на највећој конференцији ове врсте у граду и остварите видљивост
+           пред стотинама програмера и софтверских професионалаца.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <h3>Имиџ</h3>
+        <p>Будите препознати као пријатељ развојне заједнице и компанија која цијени и улаже
+           у талентоване људе.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <h3>Садржај</h3>
+        <p>Користите едукативне садржаје са INIT конференције — фотографије и видео снимци — за
+           потребе сопствених промотивних активности.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <h3>Прилике</h3>
+        <p>Остварите директан контакт са циљаним професионалцима у софтверској индустрији и
+           покрените нове послове или пројекте.</p>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:6mm;">Преглед спонзорских пакета</div>
+    <h2>Спонзорски пакети</h2>
+    <p style="font-size:8.5pt; color:var(--muted); margin-bottom:4mm;">
+      Нудимо 5 пакета, укључујући посебан пакет Земља Партнер INIT конференције.
+      Контактирајте нас за прилагођене аранжмане.
+    </p>
+
+    <table class="packages-table">
+      <thead>
+        <tr>
+          <th style="width:35%;">Бенефит</th>
+          <th class="col-zp">Земља Партнер</th>
+          <th class="col-gold">Голд</th>
+          <th class="col-act">Активист</th>
+          <th class="col-sup">Подрживач</th>
+          <th class="col-fri">Пријатељ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Бесплатне карте</td>
+          <td>8 VIP</td>
+          <td>4 VIP</td>
+          <td>2 VIP</td>
+          <td>2 редовне</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Брендирана кетеринг сала</td>
+          <td><span class="check">✔</span></td>
+          <td><span class="check">✔</span></td>
+          <td class="dash">—</td>
+          <td class="dash">—</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Промо штанд</td>
+          <td>XXL</td>
+          <td>XL</td>
+          <td>L</td>
+          <td>S</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Лого у билтену и видео клиповима</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td><span class="size-s">S</span></td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Лого пројектован у холу</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td><span class="size-s">S</span></td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Лого пројектован у ВИП салону</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td class="dash">—</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Ролл-ап банери са вашом графиком</td>
+          <td>8</td>
+          <td>4</td>
+          <td>2</td>
+          <td>1</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Лого на веб-сајту конференције</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td><span class="size-s">S</span></td>
+          <td><span class="size-s">S</span></td>
+        </tr>
+        <tr>
+          <td>Лого пројектован између предавања</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td class="dash">—</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Лого на званичним материјалима</td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-l">L</span></td>
+          <td><span class="size-s">S</span></td>
+          <td class="dash">—</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr>
+          <td>Флајер у поклон пакету за посјетиоце</td>
+          <td><span class="check">✔</span></td>
+          <td><span class="check">✔</span></td>
+          <td><span class="check">✔</span></td>
+          <td><span class="check">✔</span></td>
+          <td><span class="check">✔</span></td>
+        </tr>
+        <tr>
+          <td>Огласи за посао на Dzobs.com</td>
+          <td>Премиум</td>
+          <td>Премиум</td>
+          <td>Стандард</td>
+          <td>Стандард</td>
+          <td class="dash">—</td>
+        </tr>
+        <tr class="price-row">
+          <td>Вриједност пакета</td>
+          <td>24.000 KM<br><span style="font-size:7.5pt;opacity:.75;">12.271 €</span></td>
+          <td>12.000 KM<br><span style="font-size:7.5pt;opacity:.75;">6.136 €</span></td>
+          <td>6.000 KM<br><span style="font-size:7.5pt;opacity:.75;">3.068 €</span></td>
+          <td>3.000 KM<br><span style="font-size:7.5pt;opacity:.75;">1.534 €</span></td>
+          <td>1.500 KM<br><span style="font-size:7.5pt;opacity:.75;">768 €</span></td>
+        </tr>
+        <tr>
+          <td>Број доступних позиција</td>
+          <td>1</td>
+          <td>2</td>
+          <td>4</td>
+          <td>8</td>
+          <td>Неограничено</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 4 — ЗЕМЉА ПАРТНЕР + ГОЛД
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <div class="page-content">
+    <div class="section-label">Детаљи пакета</div>
+    <h2>Пакет Земља Партнер &amp; Голд Спонзор</h2>
+
+    <!-- Zemlja Partner -->
+    <div class="pkg-header zp">
+      <div class="pkg-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8m-4-4v4"/><path d="M6 3H4v5a4 4 0 0 0 4 4"/><path d="M18 3h2v5a4 4 0 0 1-4 4"/><path d="M6 3h12v7a6 6 0 0 1-12 0V3z"/></svg> &nbsp;Земља Партнер</div>
+      <div class="pkg-price">24.000 KM<br><span class="pkg-price-eur">≈ 12.271 €</span></div>
+    </div>
+    <ul class="benefit-list">
+      <li>8 VIP карата (ВИП салон и балкон за спонзоре и предаваче, неограничена конзумација хране и пића)</li>
+      <li>Брендирана кетеринг сала</li>
+      <li>Промо штанд (XXL)</li>
+      <li>Л лого у билтену и видео клиповима</li>
+      <li>8 ролл-ап банера посвећених Вама</li>
+      <li>Л лого на конференцијском веб-сајту</li>
+      <li>Л лого приликом пријаве учесника на WiFi конференције</li>
+      <li>Л лого пројектован између предавања</li>
+      <li>Л лого пројектован у холу током и између предавања</li>
+      <li>Л лого пројектован у ВИП салону током и између предавања</li>
+      <li>Л лого на званичним ролл-ап банерима конференције</li>
+      <li>Ваш флајер у поклон торбицама за посјетиоце</li>
+      <li>Премиум огласи за посао на Dzobs.com</li>
+    </ul>
+    <p style="font-size:8pt; color:var(--muted); font-style:italic; margin-bottom:5mm;">
+      * Доступна 1 позиција. Све бенефиције се уговарају према спецификацији организатора.
+    </p>
+
+    <!-- Gold -->
+    <div class="pkg-header gold">
+      <div class="pkg-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="M8.5 8.5 7 2h10l-1.5 6.5"/><line x1="9.5" y1="8.5" x2="12" y2="11"/><line x1="14.5" y1="8.5" x2="12" y2="11"/></svg> &nbsp;Голд Спонзор</div>
+      <div class="pkg-price">12.000 KM<br><span class="pkg-price-eur">≈ 6.136 €</span></div>
+    </div>
+    <ul class="benefit-list">
+      <li>4 VIP карате (ВИП салон и балкон за спонзоре и предаваче, неограничена конзумација хране и пића)</li>
+      <li>Брендирана кетеринг сала</li>
+      <li>Промо штанд (XL)</li>
+      <li>Л лого у билтену и видео клиповима</li>
+      <li>4 ролл-ап банера посвећених Вама</li>
+      <li>Л лого на конференцијском веб-сајту</li>
+      <li>Л лого приликом пријаве учесника на WiFi конференције</li>
+      <li>Л лого пројектован између предавања</li>
+      <li>Л лого пројектован у холу током и између предавања</li>
+      <li>Л лого пројектован у ВИП салону током и између предавања</li>
+      <li>Л лого на званичним ролл-ап банерима конференције</li>
+      <li>Ваш флајер у поклон торбицама за посјетиоце</li>
+      <li>Премиум огласи за посао на Dzobs.com</li>
+    </ul>
+    <p style="font-size:8pt; color:var(--muted); font-style:italic;">
+      * Доступне 2 позиције. Све бенефиције се уговарају према спецификацији организатора.
+    </p>
+  </div>
+
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 5 — АКТИВИСТ + ПОДРЖИВАЧ + ПРИЈАТЕЉ
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <div class="page-content">
+    <div class="section-label">Детаљи пакета</div>
+    <h2>Активист, Подрживач &amp; Пријатељ</h2>
+
+    <!-- Activist -->
+    <div class="pkg-header act">
+      <div class="pkg-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> &nbsp;Активист</div>
+      <div class="pkg-price">6.000 KM<br><span class="pkg-price-eur">≈ 3.068 €</span></div>
+    </div>
+    <ul class="benefit-list">
+      <li>2 VIP карте (ВИП салон и балкон за спонзоре и предаваче, неограничена конзумација хране и пића)</li>
+      <li>Промо штанд (L)</li>
+      <li>С лого у билтену и видео клиповима</li>
+      <li>2 ролл-ап банера посвећена Вама</li>
+      <li>С лого на конференцијском веб-сајту</li>
+      <li>С лого приликом пријаве учесника на WiFi конференције</li>
+      <li>С лого пројектован између предавања</li>
+      <li>С лого пројектован у холу током и између предавања</li>
+      <li>С лого пројектован у ВИП салону током и између предавања</li>
+      <li>С лого на званичним ролл-ап банерима конференције</li>
+      <li>Ваш флајер у поклон торбицама за посјетиоце</li>
+      <li>Стандардни огласи за посао на Dzobs.com</li>
+    </ul>
+    <p style="font-size:8pt; color:var(--muted); font-style:italic; margin-bottom:4mm;">
+      * Доступне 4 позиције.
+    </p>
+
+    <!-- Supporter -->
+    <div class="pkg-header sup">
+      <div class="pkg-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg> &nbsp;Подрживач</div>
+      <div class="pkg-price">3.000 KM<br><span class="pkg-price-eur">≈ 1.534 €</span></div>
+    </div>
+    <ul class="benefit-list" style="columns:1;">
+      <li>2 улазнице</li>
+      <li>Промо штанд (мањи, S)</li>
+      <li>С лого у билтену и видео клиповима</li>
+      <li>1 ролл-ап банер посвећен Вама</li>
+      <li>С лого на конференцијском веб-сајту</li>
+      <li>Ваш флајер у поклон торбицама за посјетиоце</li>
+      <li>Стандардни огласи за посао на Dzobs.com</li>
+    </ul>
+    <p style="font-size:8pt; color:var(--muted); font-style:italic; margin-bottom:4mm;">
+      * Доступне 8 позиција.
+    </p>
+
+    <!-- Friend -->
+    <div class="pkg-header fri">
+      <div class="pkg-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 22"/><path d="M2 8c3 8 10 13 15 14 3 .3 5-1 5-4C22 8 14 2 6 4"/></svg> &nbsp;Пријатељ</div>
+      <div class="pkg-price">1.500 KM<br><span class="pkg-price-eur">≈ 768 €</span></div>
+    </div>
+    <ul class="benefit-list" style="columns:1;">
+      <li>С лого на конференцијском веб-сајту</li>
+      <li>Ваш флајер у поклон торбицама за посјетиоце</li>
+    </ul>
+    <p style="font-size:8pt; color:var(--muted); font-style:italic;">
+      * Неограничен број позиција. Идеално за компаније које желе да подрже заједницу.
+    </p>
+  </div>
+
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     СТРАНА 6 — КОНТАКТ
+══════════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <img src="logo.svg" class="logo-svg" alt="INIT">
+  </div>
+  <div class="accent-strip"></div>
+
+  <div class="page-content">
+    <div class="section-label">Контакт</div>
+    <h2>Контактирајте нас</h2>
+    <p>
+      Радујемо се прилици да разговарамо о спонзорству и саслушамо Ваше жеље и идеје.
+      Тим организатора стоји на располагању за сва питања, прилагођене пакете и
+      додатне информације.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="name">Никола Новаковић</div>
+        <div class="line"><strong>Имејл:</strong> nikola.novakovic@initconf.org</div>
+        <div class="line"><strong>Телефон:</strong> +387 65 569 522</div>
+      </div>
+      <div class="contact-card">
+        <div class="name">Данијел Савић</div>
+        <div class="line"><strong>Имејл:</strong> daniel.savic@initconf.org</div>
+        <div class="line"><strong>Телефон:</strong> +387 65 767 702</div>
+      </div>
+    </div>
+
+    <div class="positions-note">
+      <strong>Напомена о доступности позиција:</strong> Број места за сваки пакет је ограничен.
+      Препоручујемо правовремену потврду интереса како бисте осигурали жељени пакет.
+      Контактирајте нас за резервацију или за информације о прилагођеним аранжманима.
+    </div>
+
+    <!-- Back-cover navy block -->
+    <div style="background:var(--navy); color:#fff; padding:10mm 10mm; margin-top:8mm; display:grid; grid-template-columns:1fr 1fr; gap:6mm; align-items:center;">
+      <div>
+        <div style="font-size:7.5pt; letter-spacing:.18em; text-transform:uppercase; color:var(--pink); margin-bottom:2mm;">Веб и друштвене мреже</div>
+        <div style="font-size:9pt; line-height:2; opacity:.85;">
+          initconf.org<br>
+          linkedin.com/company/initconf<br>
+          instagram.com/initconf
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <img src="logo.svg" alt="INIT" style="height:36px;width:auto;display:inline-block;">
+        <div style="font-size:14pt; font-weight:900; margin-top:2mm; letter-spacing:.04em;">INIT 2026</div>
+        <div style="font-size:7.5pt; opacity:.65; letter-spacing:.1em;">Септембар 2026 · Бања Лука</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+  <div class="footer-company">Удружење за развој информационих технологија „Developers" Бања Лука &nbsp;·&nbsp; ЈИБ: 4404476360003 &nbsp;·&nbsp; Адреса: Браће Југовића 65, 78000 Бања Лука</div>
+</div>
+</div>
+
+</body>
+</html>
