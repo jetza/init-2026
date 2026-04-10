@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | INIT 2026",
   },
   description:
-    "INIT 2026 is a one-day tech conference in Banja Luka, BiH on October 26 2026. 40+ speakers, 3 halls, 500+ attendees — focused on AI, software development, and engineering craft.",
+    "INIT 2026 is a one-day tech conference in Banja Luka, BiH on September 12 2026. 40+ speakers, 3 halls, 500+ attendees — focused on AI, software development, and engineering craft.",
   keywords: [
     "INIT 2026",
     "tech conference",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "INIT Conference",
     title: "INIT 2026 — Beyond the AI Hype",
     description:
-      "One-day tech conference in Banja Luka, BiH — October 26, 2026. 40+ speakers on AI, software craft, architecture and more.",
+      "One-day tech conference in Banja Luka, BiH — September 12, 2026. 40+ speakers on AI, software craft, architecture and more.",
     images: [
       {
         url: "/images/og-image.png",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "INIT 2026 — Beyond the AI Hype",
     description:
-      "One-day tech conference in Banja Luka, BiH — October 26, 2026. 40+ speakers on AI, software craft, architecture and more.",
+      "One-day tech conference in Banja Luka, BiH — September 12, 2026. 40+ speakers on AI, software craft, architecture and more.",
     images: ["/images/og-image.png"],
   },
   robots: {

@@ -45,7 +45,7 @@ export default function Agenda() {
           Agenda
         </h2>
         <p className="text-center text-gray-600 font-bold text-2xl mb-12">
-          Banja Luka - Banski Dvor, October 26, 2026
+          Banja Luka - Banski Dvor, September 12, 2026
         </p>
 
         {/* Schedule Table */}
@@ -111,7 +111,7 @@ export default function Agenda() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div className="gradient-bg rounded-xl p-8">
             <h3 className="text-white font-bold text-2xl mb-3">
-              Banja Luka - Banski Dvor, October 26, 2026
+              Banja Luka - Banski Dvor, September 12, 2026
             </h3>
             <p className="text-white/80 text-base mb-6">
               INIT 2026 predstavlja jedinstvenu priliku da cujete misljenja
@@ -127,7 +127,7 @@ export default function Agenda() {
           </div>
           <div className="gradient-bg rounded-xl p-8">
             <h3 className="text-white font-bold text-2xl mb-3">
-              Banja Luka - Banski Dvor, October 26, 2026
+              Banja Luka - Banski Dvor, September 12, 2026
             </h3>
             <p className="text-white/80 text-base mb-6">
               INIT 2025 is a unique opportunity to hear directly from 40

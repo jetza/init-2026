@@ -16,7 +16,7 @@ export const translations = {
     },
     hero: {
       subtitle: "Beyond the AI hype",
-      location: "Banja Luka - Banski Dvor, 26. oktobar 2026.",
+      location: "Banja Luka - Banski Dvor, 12. septembar 2026.",
       description:
         "INIT 2026 predstavlja jedinstvenu priliku da čujete mišljenja direktno od više od četrdeset istaknutih govornika iz razvojne zajednice, o stanju i budućnosti razvoja softvera.",
       becomeSponsor: "Postani sponzor",
@@ -31,12 +31,12 @@ export const translations = {
       speakersTitle: "+30 Predavača",
       speakersDesc:
         "Istaknuti profesionalci iz regije i šire. Kombinacija tehničkih, poslovnih i inspirativnih predavanja.",
-      cardTitle: "Banja Luka - Banski Dvor, 26. oktobar 2026.",
+      cardTitle: "Banja Luka - Banski Dvor, 12. septembar 2026.",
       cardDesc:
         "INIT 2026 predstavlja jedinstvenu priliku da čujete mišljenja direktno od više od četrdeset istaknutih govornika iz razvojne zajednice, o stanju i budućnosti razvoja softvera.",
       becomeSponsor: "Postani sponzor",
       locationChip: "Banja Luka - Banski Dvor",
-      dateChip: "26. oktobar 2026.",
+      dateChip: "12. septembar 2026.",
       attendeesChip: "500+ posjetilaca",
       confTitle: "Konferencija",
       confP1:
@@ -100,7 +100,7 @@ export const translations = {
       subtitle: "Upoznajte ljude koji stoje iza INIT konferencije",
     },
     footer: {
-      date: "Banja Luka - Banski Dvor, 26. oktobar 2026.",
+      date: "Banja Luka - Banski Dvor, 12. septembar 2026.",
       desc: "INIT 2026 je jedinstvena prilika da direktno čujete 40 istaknutih govornika iz razvojne zajednice.",
       becomeSponsor: "Postani sponzor",
       nav: {
@@ -128,7 +128,7 @@ export const translations = {
     },
     hero: {
       subtitle: "Beyond the AI hype",
-      location: "Banja Luka - Banski Dvor, October 26, 2026",
+      location: "Banja Luka - Banski Dvor, September 12, 2026",
       description:
         "INIT 2026 is a unique opportunity to hear opinions directly from over forty prominent speakers from the development community, on the state and future of software development.",
       becomeSponsor: "Become a Sponsor",
@@ -143,12 +143,12 @@ export const translations = {
       speakersTitle: "+30 Speakers",
       speakersDesc:
         "Distinguished professionals from the region and beyond. A mix of technical, business and inspirational talks.",
-      cardTitle: "Banja Luka - Banski Dvor, October 26, 2026",
+      cardTitle: "Banja Luka - Banski Dvor, September 12, 2026",
       cardDesc:
         "INIT 2026 is a unique opportunity to hear opinions directly from over forty prominent speakers from the development community, on the state and future of software development.",
       becomeSponsor: "Become a Sponsor",
       locationChip: "Banja Luka - Banski Dvor",
-      dateChip: "October 26, 2026",
+      dateChip: "September 12, 2026",
       attendeesChip: "500+ attendees",
       confTitle: "Conference",
       confP1:
@@ -213,7 +213,7 @@ export const translations = {
       subtitle: "Meet the people behind the INIT conference",
     },
     footer: {
-      date: "Banja Luka - Banski Dvor, October 26, 2026",
+      date: "Banja Luka - Banski Dvor, September 12, 2026",
       desc: "INIT 2026 is a unique opportunity to hear directly from 40 prominent speakers from the development community.",
       becomeSponsor: "Become a Sponsor",
       nav: {

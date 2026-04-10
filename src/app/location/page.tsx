@@ -154,7 +154,7 @@ const content = {
     hero: {
       eyebrow: "INIT 2026 — Lokacija",
       title: "Banja Luka",
-      subtitle: "Banski dvor, 26. oktobar 2026.",
+      subtitle: "Banski dvor, 12. septembar 2026.",
       intro:
         "Konferencija INIT 2026 se održava u srcu Banje Luke — u Banskom dvoru, jednoj od najljepših kulturnih institucija u Bosni i Hercegovini.",
     },
@@ -261,7 +261,7 @@ const content = {
     hero: {
       eyebrow: "INIT 2026 — Location",
       title: "Banja Luka",
-      subtitle: "Banski Dvor, October 26, 2026",
+      subtitle: "Banski Dvor, September 12, 2026",
       intro:
         "INIT 2026 takes place in the heart of Banja Luka — at Banski Dvor, one of the most beautiful cultural institutions in Bosnia and Herzegovina.",
     },

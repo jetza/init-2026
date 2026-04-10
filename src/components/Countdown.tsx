@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const EVENT_DATE = new Date("2026-10-26T09:00:00");
+const EVENT_DATE = new Date("2026-09-12T09:00:00");
 
 function getTimeLeft() {
   const now = new Date();
