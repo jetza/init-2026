@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Lang } from "@/i18n/translations";
 import {
@@ -89,9 +90,9 @@ export default function TopBar() {
           >
             info@initconf.org
           </a>
-          <a href="/location" className="hover:opacity-80 transition-opacity">
+          <Link href="/location" className="hover:opacity-80 transition-opacity">
             {t.topbar.location}
-          </a>
+          </Link>
 
           {/* Language switcher */}
           <div className="flex items-center gap-1 ml-2">
