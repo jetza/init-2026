@@ -28,7 +28,7 @@ export const translations = {
       hallsTitle: "3 Konferencijske sale",
       hallsDesc:
         "Glavna sala za predavanja širokog spektra, sala za specijalistička predavanja i sala za interaktivno predavanje.",
-      speakersTitle: "+30 Predavača",
+      speakersTitle: "+20 Predavača",
       speakersDesc:
         "Istaknuti profesionalci iz regije i šire. Kombinacija tehničkih, poslovnih i inspirativnih predavanja.",
       cardTitle: "Banja Luka - Banski Dvor, 12. septembar 2026.",
