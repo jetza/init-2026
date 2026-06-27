@@ -21,6 +21,8 @@ import {
   BlueskyIcon,
 } from "@/components/icons";
 
+const TICKET_URL = "https://tickets.initconf.org/";
+
 export default function ConferenceInfo() {
   const { t } = useLanguage();
   const ci = t.conferenceInfo;
@@ -172,7 +174,10 @@ export default function ConferenceInfo() {
                 </p>
               </div>
               <a
-                href="mailto:info@initconf.org"
+                // href="mailto:info@initconf.org"
+                href={TICKET_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3.5 bg-[#FEC73F] text-[#111111] font-bold text-xl rounded-lg hover:bg-[#e5b336] transition-colors whitespace-nowrap min-w-49.5 h-13 shrink-0"
               >
                 {ci.becomeSponsor}
@@ -228,7 +233,10 @@ export default function ConferenceInfo() {
                 </div>
 
                 <a
-                  href="mailto:info@initconf.org"
+                  // href="mailto:info@initconf.org"
+                  href={TICKET_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-shimmer inline-flex items-center justify-center w-49.5 h-13 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors"
                 >
                   {ci.becomeSponsor}

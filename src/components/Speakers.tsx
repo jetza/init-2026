@@ -35,8 +35,9 @@ const speakers = [
 export default function Speakers() {
   const { t } = useLanguage();
   const s = t.speakers;
-  // TODO: when speakers are confirmed, restore the speakers grid and remove the Call for Speakers section
-  const callForSpeakers = true;
+  // const callForSpeakers = true;
+  const showCallForSpeakers = false;
+  const showSpeakersGrid = false;
 
   return (
     <section
@@ -55,7 +56,16 @@ export default function Speakers() {
           </FadeUp>
         </div>
 
-        {callForSpeakers ? (
+        <FadeUp delay={0.1}>
+          <div className="max-w-2xl mx-auto rounded-3xl border border-white/10 bg-white/5 px-8 py-10 text-center">
+            <p className="text-white font-bold text-2xl md:text-3xl leading-snug">
+              {s.speakerListSoon}
+            </p>
+          </div>
+        </FadeUp>
+
+        {/* Call for Speakers section paused until it is needed again after the conference cycle. */}
+        {showCallForSpeakers && (
           /* Call for Speakers — full-width two-column card */
           <FadeUp delay={0.1}>
             <div className="relative rounded-3xl overflow-hidden p-px bg-linear-to-b from-[#9333EA] to-[#E32066]">
@@ -110,7 +120,10 @@ export default function Speakers() {
               </div>
             </div>
           </FadeUp>
-        ) : (
+        )}
+
+        {/* Speakers grid kept for when confirmed speakers are ready to publish. */}
+        {showSpeakersGrid && (
           /* Speakers grid — shown when callForSpeakers = false */
           <>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-240 mx-auto">

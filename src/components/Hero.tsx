@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Countdown from "./Countdown";
 import { useLanguage } from "@/context/LanguageContext";
 
+const TICKET_URL = "https://tickets.initconf.org/";
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
@@ -70,7 +72,10 @@ export default function Hero() {
           className="flex flex-wrap justify-center gap-4 mt-10"
         >
           <a
-            href="mailto:info@initconf.org"
+            // href="mailto:info@initconf.org"
+            href={TICKET_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shimmer inline-flex items-center justify-center px-10 h-13 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors"
           >
             {t.hero.becomeSponsor}
