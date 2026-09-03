@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Countdown from "./Countdown";
 import { useLanguage } from "@/context/LanguageContext";
-
-const TICKET_URL = "https://tickets.initconf.org/";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -39,7 +36,7 @@ export default function Hero() {
           {...fadeUp(0.1)}
           className="gradient-text text-5xl md:text-6xl font-extrabold leading-tight"
         >
-          INIT 2026
+          INIT 2027
         </motion.h1>
 
         {/* Subtitle - teal, uppercase */}
@@ -66,26 +63,7 @@ export default function Hero() {
           {t.hero.description}
         </motion.p>
 
-        {/* CTA Button */}
-        <motion.div
-          {...fadeUp(0.58)}
-          className="flex flex-wrap justify-center gap-4 mt-10"
-        >
-          <a
-            // href="mailto:info@initconf.org"
-            href={TICKET_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-shimmer inline-flex items-center justify-center px-10 h-13 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors"
-          >
-            {t.hero.becomeSponsor}
-          </a>
-        </motion.div>
-
-        {/* Countdown - below everything, centered */}
-        <motion.div {...fadeUp(0.7)} className="mt-12 flex justify-center">
-          <Countdown />
-        </motion.div>
+        {/* Ticket CTA and countdown are paused until the 2027 date is confirmed. */}
       </div>
 
     </section>

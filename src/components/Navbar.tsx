@@ -154,7 +154,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={(e) => handleNavClick(e, "home")}
-              aria-label="INIT 2026 — Home"
+              aria-label="INIT 2027 — Home"
             >
               <Image
                 src="/images/logo.svg"

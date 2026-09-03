@@ -56,13 +56,13 @@ export default function Speakers() {
           </FadeUp>
         </div>
 
-        <FadeUp delay={0.1}>
+        {/* <FadeUp delay={0.1}>
           <div className="max-w-2xl mx-auto rounded-3xl border border-white/10 bg-white/5 px-8 py-10 text-center">
             <p className="text-white font-bold text-2xl md:text-3xl leading-snug">
               {s.speakerListSoon}
             </p>
           </div>
-        </FadeUp>
+        </FadeUp> */}
 
         {/* Call for Speakers section paused until it is needed again after the conference cycle. */}
         {showCallForSpeakers && (
@@ -84,7 +84,7 @@ export default function Speakers() {
                     </p>
                   </div>
                   <a
-                    href="https://sessionize.com/init-2026/"
+                    href="https://sessionize.com/init-2027/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-shimmer inline-flex items-center gap-3 px-10 py-4 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors"
@@ -165,7 +165,7 @@ export default function Speakers() {
                 Svi Predavači
               </a>
               <a
-                href="https://sessionize.com/init-2026/"
+                href="https://sessionize.com/init-2027/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-shimmer inline-flex items-center justify-center px-8 py-3.5 bg-[#D3165A] text-white font-bold text-xl rounded-xl hover:bg-[#B8134E] transition-colors min-w-49.5 h-13"

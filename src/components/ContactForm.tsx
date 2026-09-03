@@ -18,7 +18,7 @@ export default function ContactForm() {
     const email = data.get("email") as string;
     const message = data.get("message") as string;
 
-    window.location.href = `mailto:info@initconf.org?subject=INIT 2026 - ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    window.location.href = `mailto:info@initconf.org?subject=INIT 2027 - ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
     setSubmitted(true);
     form.reset();
   }

@@ -8,7 +8,7 @@ export default function News() {
           <span className="text-[#1a1a2e]">Vijesti</span>
         </h2>
         <p className="text-gray-600 text-lg mb-12 max-w-xl">
-          Stay updated with the latest announcements and updates from INIT 2026
+          Stay updated with the latest announcements and updates from INIT 2027
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const EVENT_DATE = new Date("2026-09-12T09:00:00");
+const EVENT_DATE: Date | null = null;
 
 function getTimeLeft() {
+  if (!EVENT_DATE) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   const now = new Date();
   const diff = EVENT_DATE.getTime() - now.getTime();
   if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };

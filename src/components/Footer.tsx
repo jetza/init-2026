@@ -13,8 +13,6 @@ import {
   BlueskyIcon,
 } from "@/components/icons";
 
-const TICKET_URL = "https://tickets.initconf.org/";
-
 export default function Footer() {
   const { t } = useLanguage();
   const f = t.footer;
@@ -44,15 +42,7 @@ export default function Footer() {
             <p className="text-white/80 text-base mb-6 max-w-lg mx-auto">
               {f.desc}
             </p>
-            <a
-              // href="mailto:info@initconf.org"
-              href={TICKET_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-shimmer-dark inline-flex items-center px-6 py-2.5 bg-[#FFF0F5] text-[#D3165A] font-bold text-base rounded-lg hover:bg-white transition-colors"
-            >
-              {f.becomeSponsor}
-            </a>
+            {/* Ticket CTA paused until sales for INIT 2027 open. */}
           </div>
         </div>
 

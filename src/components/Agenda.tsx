@@ -45,7 +45,7 @@ export default function Agenda() {
           Agenda
         </h2>
         <p className="text-center text-gray-600 font-bold text-2xl mb-12">
-          Banja Luka - Banski Dvor, September 12, 2026
+          Banja Luka - Banski Dvor, PROLJEĆE 2027
         </p>
 
         {/* Schedule Table */}
@@ -111,34 +111,24 @@ export default function Agenda() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div className="gradient-bg rounded-xl p-8">
             <h3 className="text-white font-bold text-2xl mb-3">
-              Banja Luka - Banski Dvor, September 12, 2026
+              Banja Luka - Banski Dvor, PROLJEĆE 2027
             </h3>
             <p className="text-white/80 text-base mb-6">
-              INIT 2026 predstavlja jedinstvenu priliku da cujete misljenja
+              INIT 2027 predstavlja jedinstvenu priliku da cujete misljenja
               direktno od vise od cetrdeset istaknutih govornika iz razvojne
               zajednice, o stanju i buducnosti razvoja softvera.
             </p>
-            <a
-              href="#tickets"
-              className="inline-flex items-center px-6 py-2.5 bg-[#FFF0F5] text-[#D3165A] font-bold text-base rounded-lg hover:bg-white transition-colors"
-            >
-              Kupi kartu
-            </a>
+            {/* Ticket CTA paused until sales for INIT 2027 open. */}
           </div>
           <div className="gradient-bg rounded-xl p-8">
             <h3 className="text-white font-bold text-2xl mb-3">
-              Banja Luka - Banski Dvor, September 12, 2026
+              Banja Luka - Banski Dvor, SPRING 2027
             </h3>
             <p className="text-white/80 text-base mb-6">
-              INIT 2025 is a unique opportunity to hear directly from 40
+              INIT 2027 is a unique opportunity to hear directly from 40
               prominent speakers from the development community.
             </p>
-            <a
-              href="#tickets"
-              className="inline-flex items-center px-6 py-2.5 bg-[#FFF0F5] text-[#D3165A] font-bold text-base rounded-lg hover:bg-white transition-colors"
-            >
-              Kupi kartu
-            </a>
+            {/* Ticket CTA paused until sales for INIT 2027 open. */}
           </div>
         </div>
       </div>

@@ -152,11 +152,11 @@ const LandmarkIcons: Record<string, ReactElement> = {
 const content = {
   sr: {
     hero: {
-      eyebrow: "INIT 2026 — Lokacija",
+      eyebrow: "INIT 2027 — Lokacija",
       title: "Banja Luka",
-      subtitle: "Banski dvor, 12. septembar 2026.",
+      subtitle: "Banski dvor, PROLJEĆE 2027",
       intro:
-        "Konferencija INIT 2026 se održava u srcu Banje Luke — u Banskom dvoru, jednoj od najljepših kulturnih institucija u Bosni i Hercegovini.",
+        "Konferencija INIT 2027 se održava u srcu Banje Luke — u Banskom dvoru, jednoj od najljepših kulturnih institucija u Bosni i Hercegovini.",
     },
     venue: {
       tag: "Venue",
@@ -259,11 +259,11 @@ const content = {
   },
   en: {
     hero: {
-      eyebrow: "INIT 2026 — Location",
+      eyebrow: "INIT 2027 — Location",
       title: "Banja Luka",
-      subtitle: "Banski Dvor, September 12, 2026",
+      subtitle: "Banski Dvor, SPRING 2027",
       intro:
-        "INIT 2026 takes place in the heart of Banja Luka — at Banski Dvor, one of the most beautiful cultural institutions in Bosnia and Herzegovina.",
+        "INIT 2027 takes place in the heart of Banja Luka — at Banski Dvor, one of the most beautiful cultural institutions in Bosnia and Herzegovina.",
     },
     venue: {
       tag: "Venue",
